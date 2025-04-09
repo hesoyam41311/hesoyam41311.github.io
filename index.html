@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
+    <title>Мой крутой сайт</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,17 +21,23 @@
         }
         .container {
             width: 80%;
+            max-width: 1200px;
             margin: auto;
             padding: 20px;
         }
         nav {
             background: #e8491d;
             padding: 10px;
+            text-align: center;
         }
         nav a {
             color: white;
             text-decoration: none;
             padding: 10px 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background: #f16036;
         }
         section {
             padding: 20px 0;
@@ -44,6 +50,35 @@
             padding: 20px;
             margin-top: 20px;
         }
+        
+        /* Стили для изображения пряника */
+        .gingerbread-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 3px solid #e8491d;
+        }
+        
+        .fun-text {
+            color: #e8491d;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -54,7 +89,7 @@
     <nav>
         <div class="container">
             <a href="#home">Главная</a>
-            <a href="#about">Обо мне</a>
+            <a href="#about">Пряники</a>
             <a href="#contact">Контакты</a>
         </div>
     </nav>
@@ -62,23 +97,14 @@
     <div class="container">
         <section id="home">
             <h2>Приветствие</h2>
-            <p>СЕРЕГА САЛАМАЛЕЙКУМ</p>
+            <p class="fun-text">СЕРЕГА САЛАМАЛЕЙКУМ</p>
         </section>
 
         <section id="about">
-            <h2>тут картинки пряника будут</h2>
-            <img src="images/1.jpg" alt="пряник">
-            <p>АДСКАЯ РЖАКА 228</p>
+            <h2>!</h2>
+            <img src="images/1.jpg"  class="gingerbread-img">
+            <p class="fun-text">АДСКАЯ РЖАКА 228</p>
+            <p></p>
         </section>
 
         <section id="contact">
-            <h2>Контакты</h2>
-            <p>Свяжитесь со мной по email: <a href="mailto:example@example.com">example@example.com</a></p>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
-    </footer>
-</body>
-</html>
