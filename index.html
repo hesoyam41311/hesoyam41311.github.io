@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Юридическая помощь при затоплении квартиры | Взыскание ущерба</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #8ECAE6;
@@ -11,14 +12,21 @@
             --accent: #FFB703;
             --light: #F0F8FF;
             --dark: #023047;
+            --gray: #E9E9E9;
         }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Nunito', sans-serif;
             margin: 0;
             color: #333;
             line-height: 1.6;
             background-color: #f9f9f9;
         }
+        
         .top-bar {
             background: var(--secondary);
             color: white;
@@ -28,16 +36,20 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+        
         .contact-links {
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            flex-wrap: wrap;
         }
+        
         .contact-links a {
             color: white;
             text-decoration: none;
@@ -47,10 +59,14 @@
             padding: 6px 12px;
             border-radius: 20px;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
+        
         .contact-links a:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
         }
+        
         .header {
             background: linear-gradient(rgba(33, 158, 188, 0.85), rgba(33, 158, 188, 0.85)), 
                         url('https://example.com/flooded-house.jpg') center/cover;
@@ -63,6 +79,13 @@
             justify-content: center;
             margin-top: 44px;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
         .consultation-form {
             background: white;
             padding: 2.5rem;
@@ -76,25 +99,29 @@
             position: relative;
             z-index: 10;
         }
+        
         .consultation-form.visible {
             opacity: 1;
             transform: translateY(0);
         }
+        
         .consultation-form input {
             width: 100%;
             padding: 14px 20px;
             margin: 8px 0;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--gray);
             border-radius: 30px;
             font-size: 16px;
             transition: all 0.3s ease;
-            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
         }
+        
         .consultation-form input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.3);
         }
+        
         .btn {
             background: var(--accent);
             color: var(--dark);
@@ -102,7 +129,7 @@
             padding: 16px 32px;
             border-radius: 30px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
             display: inline-block;
             text-decoration: none;
             font-size: 16px;
@@ -110,12 +137,15 @@
             width: 100%;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(255, 183, 3, 0.3);
+            font-family: 'Nunito', sans-serif;
         }
+        
         .btn:hover {
             background: #FFA000;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(255, 183, 3, 0.4);
         }
+        
         .calculator {
             background: white;
             padding: 2.5rem;
@@ -124,76 +154,159 @@
             max-width: 800px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
         }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .calculator-input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .calculator label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        
         .calculator input, .calculator select {
             width: 100%;
             padding: 14px 20px;
-            margin: 10px 0;
-            border: 2px solid #e0e0e0;
-            border-radius: 30px;
+            border: 2px solid var(--gray);
+            border-radius: 12px;
             font-size: 16px;
             transition: all 0.3s ease;
+            font-family: 'Nunito', sans-serif;
+            background: white;
         }
+        
         .calculator input:focus, .calculator select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.3);
         }
+        
         h1, h2, h3 {
             color: var(--dark);
+            font-weight: 700;
         }
+        
         h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
+        
         h2 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
             text-align: center;
         }
+        
         h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             text-align: center;
             color: var(--secondary);
         }
+        
         p {
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto 2rem;
+            color: #555;
         }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
-        }
+        
         #result {
-            margin-top: 20px;
-            padding: 20px;
+            margin-top: 25px;
+            padding: 25px;
             background: var(--light);
             border-radius: 16px;
             display: none;
             text-align: center;
+            animation: fadeIn 0.5s ease-out;
         }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         #sum {
             color: var(--secondary);
-            font-weight: bold;
-            font-size: 1.2em;
+            font-weight: 800;
+            font-size: 1.4em;
         }
+        
         @media (max-width: 768px) {
             .contact-links {
                 justify-content: center;
+                gap: 10px;
             }
+            
             .header {
                 padding: 5rem 1rem 3rem;
                 min-height: 400px;
             }
+            
             h1 {
                 font-size: 2rem;
             }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
             .consultation-form {
+                padding: 1.8rem;
+                margin: 1.5rem auto;
+                max-width: 90%;
+            }
+            
+            .calculator {
+                padding: 1.8rem;
+                max-width: 90%;
+            }
+            
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .calculator-input-group {
+                margin-bottom: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-links a {
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+            
+            .header {
+                padding: 4rem 1rem 2rem;
+                min-height: 350px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .consultation-form, .calculator {
                 padding: 1.5rem;
-                margin: 1rem auto;
+            }
+            
+            .consultation-form input, .calculator input, .calculator select {
+                padding: 12px 16px;
+            }
+            
+            .btn {
+                padding: 14px 24px;
             }
         }
     </style>
@@ -217,11 +330,13 @@
     </div>
 
     <header class="header">
-        <h1>Профессиональная помощь при затоплении квартиры</h1>
-        <p>Вернем ваши деньги через суд или в досудебном порядке</p>
+        <div class="container">
+            <h1>Профессиональная помощь при затоплении квартиры</h1>
+            <p>Вернем ваши деньги через суд или в досудебном порядке</p>
+        </div>
     </header>
 
-    <section style="max-width: 1200px; margin: 2rem auto; padding: 0 20px;">
+    <main class="container">
         <div class="consultation-form">
             <h3>Бесплатная консультация</h3>
             <form>
@@ -233,38 +348,46 @@
 
         <div class="calculator">
             <h2>Калькулятор ущерба</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="calculator-grid">
                 <div>
-                    <label>Тип помещения</label>
-                    <select>
-                        <option>Квартира</option>
-                        <option>Офис</option>
-                        <option>Подвал</option>
-                    </select>
+                    <div class="calculator-input-group">
+                        <label>Тип помещения</label>
+                        <select>
+                            <option>Квартира</option>
+                            <option>Офис</option>
+                            <option>Подвал</option>
+                        </select>
+                    </div>
                     
-                    <label>Площадь затопления (м²)</label>
-                    <input type="number" placeholder="20">
+                    <div class="calculator-input-group">
+                        <label>Площадь затопления (м²)</label>
+                        <input type="number" placeholder="20">
+                    </div>
                 </div>
                 <div>
-                    <label>Степень повреждения</label>
-                    <select>
-                        <option>Незначительные</option>
-                        <option>Средние</option>
-                        <option>Серьезные</option>
-                    </select>
+                    <div class="calculator-input-group">
+                        <label>Степень повреждения</label>
+                        <select>
+                            <option>Незначительные</option>
+                            <option>Средние</option>
+                            <option>Серьезные</option>
+                        </select>
+                    </div>
                     
-                    <label>Поврежденная мебель</label>
-                    <input type="number" placeholder="5 предметов">
+                    <div class="calculator-input-group">
+                        <label>Поврежденная мебель</label>
+                        <input type="number" placeholder="5 предметов">
+                    </div>
                 </div>
             </div>
-            <button class="btn" style="margin-top: 20px;">Рассчитать ущерб</button>
+            <button class="btn" style="margin-top: 10px;">Рассчитать ущерб</button>
             
-            <div id="result" style="margin-top: 20px; padding: 15px; background: var(--light); border-radius: 16px; display: none;">
+            <div id="result">
                 <h3>Примерная сумма ущерба: <span id="sum">85 000</span> ₽</h3>
                 <p>Для точного расчета оставьте заявку на бесплатный выезд эксперта</p>
             </div>
         </div>
-    </section>
+    </main>
 
     <script>
         // Показ формы при прокрутке
@@ -273,7 +396,9 @@
             
             // Показ результата калькулятора
             document.querySelector('.calculator .btn').addEventListener('click', function() {
-                document.getElementById('result').style.display = 'block';
+                const result = document.getElementById('result');
+                result.style.display = 'block';
+                result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
             
             // Анимация появления формы при скролле
