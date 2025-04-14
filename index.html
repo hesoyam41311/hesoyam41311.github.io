@@ -3,156 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профессиональная помощь при затоплении</title>
+    <title>Юридическая помощь при затоплении квартиры | Взыскание ущерба</title>
     <style>
         :root {
-            --primary: #0066CC;
-            --secondary: #003366;
-            --accent: #FF6B00;
-            --light: #F5F9FF;
-            --gray: #F5F5F5;
-            --border: #E0E0E0;
+            --primary: #8ECAE6;
+            --secondary: #219EBC;
+            --accent: #FFB703;
+            --light: #F0F8FF;
+            --dark: #023047;
         }
-        
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             color: #333;
             line-height: 1.6;
-            background-color: var(--gray);
+            background-color: #f9f9f9;
         }
-        
+        .top-bar {
+            background: var(--secondary);
+            color: white;
+            padding: 12px 0;
+            font-size: 14px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .contact-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .header {
+            background: linear-gradient(rgba(33, 158, 188, 0.85), rgba(33, 158, 188, 0.85)), 
+                        url('https://example.com/flooded-house.jpg') center/cover;
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 44px;
+        }
         .consultation-form {
             background: white;
             padding: 2.5rem;
-            border-radius: 12px;
+            border-radius: 16px;
             max-width: 420px;
             margin: 2rem auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+            position: relative;
+            z-index: 10;
         }
-        
-        .form-title {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 600;
+        .consultation-form.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: #555;
-        }
-        
-        .form-input {
+        .consultation-form input {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 1rem;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 16px;
             transition: all 0.3s ease;
             box-sizing: border-box;
         }
-        
-        .form-input:focus {
+        .consultation-form input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+            box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.3);
         }
-        
-        .form-textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
+        .btn {
             background: var(--accent);
-            color: white;
+            color: var(--dark);
             border: none;
-            padding: 1rem 2rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 500;
+            padding: 16px 32px;
+            border-radius: 30px;
             cursor: pointer;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
             width: 100%;
             transition: all 0.3s ease;
-            margin-top: 0.5rem;
+            box-shadow: 0 4px 8px rgba(255, 183, 3, 0.3);
         }
-        
-        .submit-btn:hover {
-            background: #E05D00;
+        .btn:hover {
+            background: #FFA000;
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 183, 3, 0.4);
         }
-        
-        .form-note {
-            font-size: 0.8rem;
-            color: #666;
+        .calculator {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 14px 20px;
+            margin: 10px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .calculator input:focus, .calculator select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.3);
+        }
+        h1, h2, h3 {
+            color: var(--dark);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            margin-top: 1.5rem;
-            line-height: 1.4;
         }
-        
-        .form-divider {
-            display: flex;
-            align-items: center;
-            margin: 1.5rem 0;
-            color: #999;
-            font-size: 0.8rem;
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--secondary);
         }
-        
-        .form-divider::before,
-        .form-divider::after {
-            content: "";
-            flex: 1;
-            border-bottom: 1px solid var(--border);
+        p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
         }
-        
-        .form-divider::before {
-            margin-right: 1rem;
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
         }
-        
-        .form-divider::after {
-            margin-left: 1rem;
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 16px;
+            display: none;
+            text-align: center;
+        }
+        #sum {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        @media (max-width: 768px) {
+            .contact-links {
+                justify-content: center;
+            }
+            .header {
+                padding: 5rem 1rem 3rem;
+                min-height: 400px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .consultation-form {
+                padding: 1.5rem;
+                margin: 1rem auto;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="consultation-form">
-        <h2 class="form-title">Бесплатная консультация</h2>
-        
-        <form>
-            <div class="form-group">
-                <label class="form-label">Ваше имя</label>
-                <input type="text" class="form-input" placeholder="Иванов Иван Иванович" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Телефон</label>
-                <input type="tel" class="form-input" placeholder="+7 (___) ___-__-__" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Описание ситуации (необязательно)</label>
-                <textarea class="form-input form-textarea" placeholder="Когда произошло затопление, какие повреждения..."></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn">Получить консультацию</button>
-            
-            <div class="form-divider">или</div>
-            
-            <p class="form-note">
-                Свяжитесь с нами напрямую:<br>
-                Телефон: <a href="tel:+79991234567" style="color: var(--primary); text-decoration: none;">+7 (999) 123-45-67</a><br>
-                WhatsApp, Telegram по тому же номеру
-            </p>
-        </form>
+    <div class="top-bar">
+        <div class="contact-links">
+            <a href="tel:+79991234567">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M20 15.5c-1.2 0-2.5-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.5-5.2-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.4-.5-3.6 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/></svg>
+                +7 (999) 123-45-67
+            </a>
+            <a href="https://t.me/your_username" target="_blank">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.9 8.2l-1.9 9.1c-.1.6-.4.8-.8.5l-3.7-2.8-1.8 1.7c-.2.2-.4.4-.8.1l.3-3.8 6.8-6.1c.3-.3 0-.4-.4-.1l-8.4 5.3-3.6-1.1c-.6-.2-.6-.6.1-.9l14-5.4c.5-.2 1 .1.8.9z"/></svg>
+                Telegram
+            </a>
+            <a href="https://wa.me/79991234567" target="_blank">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm6.2 17.3c-.3.5-1.6 1.2-2.2 1.2-.6 0-1.3-.2-3.8-1.3-2.9-1.3-4.8-4.4-5-4.6-.1-.3-.4-1.1.1-2.1.2-.5.8-.8 1.3-.6 0 0 .5.2 1.3.7.3.2.5.3.7.1.2-.1.6-.8.8-1.1.1-.2.1-.4 0-.5-.1-.2-.4 0-.8.2-.4.2-.8.4-1 .4-.2 0-.4-.1-.6-.2-.3-.2-.7-.4-1.2-.7-1.9-1-3.2-1.1-3.8-1.1-.7 0-1.7.2-2.5 1.3-.7 1-1 2.3-.7 3.6.3 1.6 1.6 5.4 4.3 7.9 3.1 2.8 6.8 3.6 8.3 3.9 1.5.3 2.8.2 3.4-.2.7-.5.8-1.4.8-1.6 0-.2-.1-.3-.3-.2-.5.2-1.1.3-1.3.3-.3 0-.8-.1-1.1-.4-.7-.5-1.4-1.1-2-1.8-.2-.3-.4-.3-.3-.5.1-.1.5-.5.7-.7.5-.4.8-.9 1-1.4.1-.4.1-.7 0-1-.1-.3-.5-.4-.7-.3-.6.2-1.3.5-1.8.7-.7.3-.8.3-1.1.1-.3-.2-.6-.7-.9-1-.3-.4-.7-.8-1-1.2-.2-.3-.4-.5-.7-.5h-.5c-.2 0-.6.1-.8.6-.3.6-.9 2-.9 2.7 0 .7.3 1 .5 1.3.2.3 1.1 1.7 2.6 2.6 1.5.9 2.6.8 3.1.7.5-.1 1.6-.6 1.8-1.3.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.1z"/></svg>
+                WhatsApp
+            </a>
+        </div>
     </div>
+
+    <header class="header">
+        <h1>Профессиональная помощь при затоплении квартиры</h1>
+        <p>Вернем ваши деньги через суд или в досудебном порядке</p>
+    </header>
+
+    <section style="max-width: 1200px; margin: 2rem auto; padding: 0 20px;">
+        <div class="consultation-form">
+            <h3>Бесплатная консультация</h3>
+            <form>
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Телефон" required>
+                <button type="submit" class="btn">Получить консультацию</button>
+            </form>
+        </div>
+
+        <div class="calculator">
+            <h2>Калькулятор ущерба</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <label>Тип помещения</label>
+                    <select>
+                        <option>Квартира</option>
+                        <option>Офис</option>
+                        <option>Подвал</option>
+                    </select>
+                    
+                    <label>Площадь затопления (м²)</label>
+                    <input type="number" placeholder="20">
+                </div>
+                <div>
+                    <label>Степень повреждения</label>
+                    <select>
+                        <option>Незначительные</option>
+                        <option>Средние</option>
+                        <option>Серьезные</option>
+                    </select>
+                    
+                    <label>Поврежденная мебель</label>
+                    <input type="number" placeholder="5 предметов">
+                </div>
+            </div>
+            <button class="btn" style="margin-top: 20px;">Рассчитать ущерб</button>
+            
+            <div id="result" style="margin-top: 20px; padding: 15px; background: var(--light); border-radius: 16px; display: none;">
+                <h3>Примерная сумма ущерба: <span id="sum">85 000</span> ₽</h3>
+                <p>Для точного расчета оставьте заявку на бесплатный выезд эксперта</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Показ формы при прокрутке
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.consultation-form');
+            
+            // Показ результата калькулятора
+            document.querySelector('.calculator .btn').addEventListener('click', function() {
+                document.getElementById('result').style.display = 'block';
+            });
+            
+            // Анимация появления формы при скролле
+            function checkScroll() {
+                const formPosition = form.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(formPosition < screenPosition) {
+                    form.classList.add('visible');
+                    window.removeEventListener('scroll', checkScroll);
+                }
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            // Проверить сразу при загрузке, если форма уже в зоне видимости
+            checkScroll();
+        });
+    </script>
 </body>
 </html>
